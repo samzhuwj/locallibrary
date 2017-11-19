@@ -22,8 +22,13 @@ def index(request):
         context={'num_books':num_books,'num_instances':num_instances,'num_instances_available':num_instances_available,'num_authors':num_authors},
     )
 
+
 class BookListView(generic.ListView):
     """
     Generic class-based view for a list of books.
     """    
+    model = Book
+
+
+class BookDetailView(generic.DetailView):
     model = Book
