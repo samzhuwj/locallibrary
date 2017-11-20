@@ -56,7 +56,7 @@ class AuthorDetailView(generic.DetailView):
     model = Author
 
 
-class LoanedBooksAllListView(LoginRequiredMixin,generic.ListView):
+class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
     """
     Generic class-based view listing all books on loan. Only visible to users with can_mark_returned permission.
     """
