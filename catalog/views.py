@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import generic
 
@@ -53,3 +54,15 @@ class AuthorDetailView(generic.DetailView):
     Generic class-based detail view for an author.
     """
     model = Author
+
+
+class LoanedBooksAllListView(LoginRequiredMixin,generic.ListView):
+    """
+    Generic class-based view listing all books on loan. Only visible to users with can_mark_returned permission.
+    """
+    model = BookInstance
+    template_name ='catalog/bookinstance_list_borrowed_user.html'
+    paginate_by = 1
+    
+    def get_queryset(self):
+        return BookInstance.objects.filter(borrower=self.request.user).filter(status__exact='o').order_by('due_back') 
