@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '2y5tipj#_61%@i0jv2twqa_@ms@kvm
 # DEBUG = True
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['glacial-chamber-75755.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
